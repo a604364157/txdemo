@@ -1,0 +1,10 @@
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\mapper\IUserBMapper.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\entity\UserB.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\controller\UserBController.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\feign\UserCApi.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\service\IUserBService.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\entity\UserC.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\MyGenerator.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\DemoBApplication.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\config\SwaggerConfig.java
+E:\workspaces\demo\txdemo\demo-b\src\main\java\com\jjx\demob\service\impl\UserBServiceImpl.java

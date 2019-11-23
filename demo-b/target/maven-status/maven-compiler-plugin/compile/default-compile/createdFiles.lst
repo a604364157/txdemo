@@ -1,0 +1,11 @@
+com\jjx\demob\controller\UserBController.class
+com\jjx\demob\service\IUserBService.class
+com\jjx\demob\entity\UserB.class
+com\jjx\demob\DemoBApplication.class
+com\jjx\demob\feign\UserCApi.class
+com\jjx\demob\MyGenerator.class
+com\jjx\demob\service\impl\UserBServiceImpl.class
+com\jjx\demob\mapper\IUserBMapper.class
+com\jjx\demob\config\SwaggerConfig.class
+META-INF\spring-configuration-metadata.json
+com\jjx\demob\entity\UserC.class

@@ -1,0 +1,96 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: demo-tm
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    tomcat:
+      #初始化连接大小
+      initial-size: 3
+      #最小连接量
+      min-idle: 3
+      #最大连接量
+      max-active: 20
+      #获取连接最大等待时间
+      max-wait: 60000
+      #关闭空白连接的检测时间间隔
+      time-between-eviction-runs-millis: 60000
+      #连接的最小生存时间
+      min-evictable-idle-time-millis: 300000
+      #测试连接语句
+      validation-query: SELECT 1 FROM DUAL
+      #申请连接检查
+      test-while-idle: true
+      #执行连接检查
+      test-on-borrow: false
+      #归还连接检查
+      test-on-return: false
+
+  jpa:
+    # 数据库方言
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    # 第一次运行可以设置为: create, 为TM创建持久化数据库表
+    hibernate:
+      ddl-auto: validate
+
+  #redis 的设置信息
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#    password: ''
+
+#  mail:
+#    host: smtp.qq.com
+#    port: 587
+#    password:
+#    username: xxxxx@**.com
+
+tx-lcn:
+  # 开启日志,默认为false
+  logger:
+    enabled: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    jdbc-url: ${spring.datasource.url}
+    password: ${spring.datasource.password}
+    username: ${spring.datasource.username}
+  manager:
+    # TM监听IP. 默认为 127.0.0.1
+    host: 127.0.0.1
+    # TM监听Socket端口
+    port: 8070
+    # TM后台登陆密码，默认值为codingapi
+    admin-key: 123456
+    # 事务处理并发等级. 默认为机器逻辑核心数5倍
+    concurrent-level: 160
+    # 分布式事务锁超时时间 默认为-1，当-1时会用tx-lcn.manager.dtx-time的时间
+    dtx-lock-time: ${tx-lcn.manager.dtx-time}
+    # 分布式事务执行总时间(ms). 默认为36000
+    dtx-time: 8000
+    # 事务异常通知 默认是邮件通知
+#    ex-url: /provider/email-to/***@**.com
+    # 异常回调开关。开启时请制定ex-url
+#    ex-url-enabled: false
+    # 心跳检测时间(ms). 默认为 300000
+    heart-time: 300000
+    # 雪花算法的sequence位长度，默认为12位.
+    seq-len: 12
+  message:
+    netty:
+      # 参数延迟删除时间单位ms  默认为dtx-time值
+      attr-delay-time: ${tx-lcn.manager.dtx-time}
+      wait-time: ${tx-lcn.manager.dtx-time}
+
+
+logging:
+  level:
+    com.codingapi.txlcn: debug

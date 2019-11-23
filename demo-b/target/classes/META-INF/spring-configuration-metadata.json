@@ -1,0 +1,37 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger",
+      "type": "com.jjx.demob.config.SwaggerConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger.apis",
+      "type": "java.util.Map<java.lang.String,java.lang.String>"
+    },
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger.description",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger.swagger-enable",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger.title",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jjx.demob.config.SwaggerConfig",
+      "name": "swagger.version",
+      "type": "java.lang.String"
+    }
+  ]
+}

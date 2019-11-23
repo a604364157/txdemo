@@ -1,0 +1,75 @@
+server:
+  port: 10003
+
+spring:
+  application:
+    name: demo-c
+  cloud:
+    nacos:
+      discovery:
+        server-addr:  localhost:8848
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      #初始化连接大小
+      initial-size: 3
+      #最小连接量
+      min-idle: 3
+      #最大连接量
+      max-active: 20
+      #获取连接最大等待时间
+      max-wait: 60000
+      #关闭空白连接的检测时间间隔
+      time-between-eviction-runs-millis: 60000
+      #连接的最小生存时间
+      min-evictable-idle-time-millis: 300000
+      #测试连接语句
+      validation-query: SELECT 1 FROM DUAL
+      #申请连接检查
+      test-while-idle: true
+      #执行连接检查
+      test-on-borrow: false
+      #归还连接检查
+      test-on-return: false
+
+ribbon:
+  ReadTimeout: 6000
+  ConnectTimeout: 6000
+
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+    chain-level: 4
+  ribbon:
+    loadbalancer:
+      dtx:
+        enabled: true
+  logger:
+    enabled: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    jdbc-url: ${spring.datasource.url}
+    password: ${spring.datasource.password}
+    username: ${spring.datasource.username}
+
+swagger:
+  #是否开启Swagger
+  swagger-enable: true
+  #swagger文档名称
+  title: 测试服务C
+  #swagger文档描述
+  description: 测试服务C REST-API在线文档文档
+  #swagger文档版本
+  version: 1.0
+  apis:
+    #待生成Swagger API文档的controller的包名
+    base-package: com.jjx.democ
+
+logging:
+  level:
+    com.jjx.demoa.mapper: debug
+    com.codingapi.txlcn: debug

@@ -1,0 +1,9 @@
+com\jjx\demod\config\SwaggerConfig.class
+com\jjx\demod\entity\UserD.class
+com\jjx\demod\MyGenerator.class
+com\jjx\demod\controller\UserDController.class
+com\jjx\demod\mapper\IUserDMapper.class
+com\jjx\demod\service\IUserDService.class
+com\jjx\demod\DemoDApplication.class
+com\jjx\demod\service\impl\UserDServiceImpl.class
+META-INF\spring-configuration-metadata.json
