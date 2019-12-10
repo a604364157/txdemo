@@ -45,9 +45,9 @@ public class UserAController {
     @Transactional(rollbackFor = Exception.class)
     @PostMapping
     public Boolean save(@RequestBody UserA userA) {
-        userAService.save(userA);
         UserB userB = new UserB();
         BeanUtils.copyProperties(userA, userB);
+        userBApi.save(userB);
         userBApi.save(userB);
         return Boolean.TRUE;
     }

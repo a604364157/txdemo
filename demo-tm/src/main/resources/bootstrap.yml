@@ -75,7 +75,7 @@ tx-lcn:
     # 分布式事务锁超时时间 默认为-1，当-1时会用tx-lcn.manager.dtx-time的时间
     dtx-lock-time: ${tx-lcn.manager.dtx-time}
     # 分布式事务执行总时间(ms). 默认为36000
-    dtx-time: 8000
+    dtx-time: 36000
     # 事务异常通知 默认是邮件通知
 #    ex-url: /provider/email-to/***@**.com
     # 异常回调开关。开启时请制定ex-url

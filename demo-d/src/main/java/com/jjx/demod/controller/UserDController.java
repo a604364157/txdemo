@@ -4,7 +4,6 @@ package com.jjx.demod.controller;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.codingapi.txlcn.tc.annotation.LcnTransaction;
-import com.codingapi.txlcn.tc.core.DTXLocalContext;
 import com.jjx.demod.entity.UserD;
 import com.jjx.demod.service.IUserDService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +42,8 @@ public class UserDController {
     @LcnTransaction
     @Transactional(rollbackFor = Exception.class)
     @PostMapping
-    public Boolean save(@RequestBody UserD userD) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public Boolean save(@RequestBody UserD userD) throws InterruptedException {
+        TimeUnit.MILLISECONDS.sleep(500);
         return userDService.save(userD);
     }
 
