@@ -11,7 +11,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
@@ -71,5 +71,6 @@ swagger:
 
 logging:
   level:
+    root: info
     com.jjx.demoa.mapper: debug
-    com.codingapi.txlcn: trace
+    com.codingapi.txlcn: debug
