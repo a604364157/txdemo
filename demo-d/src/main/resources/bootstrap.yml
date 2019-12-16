@@ -10,32 +10,73 @@ spring:
         server-addr:  localhost:8848
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
-    username: root
-    password: 123456
-    type: com.alibaba.druid.pool.DruidDataSource
-    tomcat:
-      #初始化连接大小
-      initial-size: 3
-      #最小连接量
-      min-idle: 3
-      #最大连接量
-      max-active: 20
-      #获取连接最大等待时间
-      max-wait: 60000
-      #关闭空白连接的检测时间间隔
-      time-between-eviction-runs-millis: 60000
-      #连接的最小生存时间
-      min-evictable-idle-time-millis: 300000
-      #测试连接语句
-      validation-query: SELECT 1 FROM DUAL
-      #申请连接检查
-      test-while-idle: true
-      #执行连接检查
-      test-on-borrow: false
-      #归还连接检查
-      test-on-return: false
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
+#    username: root
+#    password: 123456
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    tomcat:
+#      #初始化连接大小
+#      initial-size: 3
+#      #最小连接量
+#      min-idle: 3
+#      #最大连接量
+#      max-active: 20
+#      #获取连接最大等待时间
+#      max-wait: 60000
+#      #关闭空白连接的检测时间间隔
+#      time-between-eviction-runs-millis: 60000
+#      #连接的最小生存时间
+#      min-evictable-idle-time-millis: 300000
+#      #测试连接语句
+#      validation-query: SELECT 1 FROM DUAL
+#      #申请连接检查
+#      test-while-idle: true
+#      #执行连接检查
+#      test-on-borrow: false
+#      #归还连接检查
+#      test-on-return: false
+
+    dataSources:
+      - db-name: master
+        db-type: mysql
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: 123456
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+        #打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        validation-query: SELECT 1 FROM DUAL
+        validation-query-timeout: 30000
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: false
+        default-read-only: false
+      - db-name: slave
+        db-type: mysql
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: 123456
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        max-wait: 60000
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        validation-query: SELECT 1 FROM DUAL
+        validation-query-timeout: 30000
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: false
+        default-read-only: true
+
+
 
 ribbon:
   ReadTimeout: 6000
@@ -51,10 +92,10 @@ tx-lcn:
         enabled: true
   logger:
     enabled: true
-    driver-class-name: ${spring.datasource.driver-class-name}
-    jdbc-url: ${spring.datasource.url}
-    password: ${spring.datasource.password}
-    username: ${spring.datasource.username}
+    driver-class-name: com.mysql.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useSSL=false
+    password: 123456
+    username: root
 
 swagger:
   #是否开启Swagger

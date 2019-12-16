@@ -3,6 +3,7 @@ package com.jjx.demoa.controller;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.codingapi.txlcn.tc.annotation.LcnTransaction;
+import com.codingapi.txlcn.tc.aspect.TxDataSourceUtil;
 import com.jjx.demoa.entity.UserA;
 import com.jjx.demoa.entity.UserB;
 import com.jjx.demoa.feign.UserBApi;
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * <p>
@@ -34,6 +39,8 @@ public class UserAController {
     private IUserAService userAService;
     @Autowired
     private UserBApi userBApi;
+    @Autowired
+    private DataSource dataSource;
 
     @GetMapping
     public UserA get(@RequestParam Integer keyId) {
@@ -44,7 +51,7 @@ public class UserAController {
     @LcnTransaction
     @Transactional(rollbackFor = Exception.class)
     @PostMapping
-    public Boolean save(@RequestBody UserA userA) {
+    public Boolean save(@RequestBody UserA userA) throws Throwable {
         UserB userB = new UserB();
         BeanUtils.copyProperties(userA, userB);
         userBApi.save(userB);
